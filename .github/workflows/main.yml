@@ -1,4 +1,4 @@
-name: Build
+name: Build WhisperShadow
 
 on:
   push:
@@ -22,11 +22,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Build
-        working-directory: WhisperShadow-3.0-main
         run: gradle build
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: WhisperShadow
-          path: WhisperShadow-3.0-main/build/libs/*.jar
+          path: build/libs/*.jar
