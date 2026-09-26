@@ -24,6 +24,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.state.property.Properties;
+import net.minecraft.entity.SpawnReason;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -185,8 +186,8 @@ public final class PhantomHorrorEvents {
     }
 
 private static AnimalEntity createRandomAnimal(ClientWorld world) {
-    int type = random.nextInt(5);
-
+    int type = RANDOM.nextInt(5);
+    
     return switch (type) {
         case 0 -> (AnimalEntity) EntityType.COW.create(world, SpawnReason.COMMAND);
         case 1 -> (AnimalEntity) EntityType.SHEEP.create(world, SpawnReason.COMMAND);
