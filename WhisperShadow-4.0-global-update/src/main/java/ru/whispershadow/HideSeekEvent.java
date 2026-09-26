@@ -281,7 +281,7 @@ public final class HideSeekEvent {
         Vec3d from = watcher.getEyePos();
         Vec3d to = player.getEyePos();
 
-        var result = watcher.getWorld().raycast(
+        var result = client.world.raycast(
                 new RaycastContext(
                         from,
                         to,
