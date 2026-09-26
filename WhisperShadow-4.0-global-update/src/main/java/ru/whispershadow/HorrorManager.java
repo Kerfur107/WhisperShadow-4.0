@@ -1237,6 +1237,8 @@ public final class HorrorManager {
                         Math.cos(yaw) *
                                 distance;
 
+        GameProfile profile = client.player.getGameProfile();
+
         ShadowEntity entity =
                 new ShadowEntity(
                         client.world,
