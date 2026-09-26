@@ -63,7 +63,7 @@ public final class ExtraHorrorEvents {
             if (eventName.equals("nothing_shadow") && !temporaryEntities.isEmpty()) {
                 Entity e = temporaryEntities.get(0);
                 if (e != null) {
-                    Vec3d p = client.player.getPos().add(client.player.getRotationVec(1.0f).multiply(3.5));
+                    Vec3d p = client.player.getEntityPos().add(client.player.getRotationVec(1.0f).multiply(3.5));
                     double drift = Math.sin((System.currentTimeMillis() % 3000L) / 3000.0 * Math.PI * 2.0) * 0.35;
                     e.setPosition(p.x + drift, p.y - 0.02, p.z - drift * 0.25);
                 }
@@ -241,7 +241,7 @@ public final class ExtraHorrorEvents {
     }
 
     private static void spawnNothingShadow(MinecraftClient client) {
-        Vec3d pos = client.player.getPos().add(client.player.getRotationVec(1.0f).multiply(3.5));
+        Vec3d pos = client.player.getEntityPos().add(client.player.getRotationVec(1.0f).multiply(3.5));
         BlockDisplayEntity display = new BlockDisplayEntity(EntityTypeHolder.block(), client.world);
         display.setPosition(pos.x, pos.y - 0.02, pos.z);
         display.setBlockState(Blocks.BLACK_CARPET.getDefaultState());
