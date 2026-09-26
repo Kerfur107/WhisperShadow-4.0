@@ -184,13 +184,15 @@ public final class PhantomHorrorEvents {
         );
     }
 
-private static Entity createPhantomAnimal(ClientWorld world, int type) {
+private static AnimalEntity createRandomAnimal(ClientWorld world) {
+    int type = random.nextInt(5);
+
     return switch (type) {
-        case 0 -> EntityType.COW.create(world, SpawnReason.COMMAND);
-        case 1 -> EntityType.SHEEP.create(world, SpawnReason.COMMAND);
-        case 2 -> EntityType.PIG.create(world, SpawnReason.COMMAND);
-        case 3 -> EntityType.CHICKEN.create(world, SpawnReason.COMMAND);
-        default -> EntityType.HORSE.create(world, SpawnReason.COMMAND);
+        case 0 -> (AnimalEntity) EntityType.COW.create(world, SpawnReason.COMMAND);
+        case 1 -> (AnimalEntity) EntityType.SHEEP.create(world, SpawnReason.COMMAND);
+        case 2 -> (AnimalEntity) EntityType.PIG.create(world, SpawnReason.COMMAND);
+        case 3 -> (AnimalEntity) EntityType.CHICKEN.create(world, SpawnReason.COMMAND);
+        default -> (AnimalEntity) EntityType.HORSE.create(world, SpawnReason.COMMAND);
     };
 }
 
