@@ -49,6 +49,15 @@ public final class PhantomHorrorEvents {
 
     private PhantomHorrorEvents() {}
 
+    private static void removeSceneEntities() {
+    for (Entity entity : sceneEntities) {
+        if (entity != null) {
+            entity.discard();
+        }
+    }
+    sceneEntities.clear();
+}
+
     public static void tick(MinecraftClient client) {
         if (client.player == null || client.world == null) {
             clear(client);
@@ -175,16 +184,15 @@ public final class PhantomHorrorEvents {
         );
     }
 
-    private static AnimalEntity createRandomAnimal(ClientWorld world) {
-        int roll = RANDOM.nextInt(5);
-        return switch (roll) {
-            case 0 -> EntityType.COW.create(world);
-            case 1 -> EntityType.SHEEP.create(world);
-            case 2 -> EntityType.PIG.create(world);
-            case 3 -> EntityType.CHICKEN.create(world);
-            default -> EntityType.HORSE.create(world);
-        };
-    }
+private static Entity createPhantomAnimal(ClientWorld world, int type) {
+    return switch (type) {
+        case 0 -> EntityType.COW.create(world, SpawnReason.COMMAND);
+        case 1 -> EntityType.SHEEP.create(world, SpawnReason.COMMAND);
+        case 2 -> EntityType.PIG.create(world, SpawnReason.COMMAND);
+        case 3 -> EntityType.CHICKEN.create(world, SpawnReason.COMMAND);
+        default -> EntityType.HORSE.create(world, SpawnReason.COMMAND);
+    };
+}
 
     private static boolean isSafeAnimalPosition(ClientWorld world, BlockPos feet) {
         BlockPos head = feet.up();
